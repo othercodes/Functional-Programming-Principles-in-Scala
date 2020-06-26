@@ -4,8 +4,6 @@ class Rational(x: Int, y: Int) {
 
   require(y != 0, "Denominator must not be 0")
 
-  // additional constructor that match when the class
-  // is instantiated with one argument
   def this(x: Int) = this(x, 1)
 
   val numerator: Int = x / gcd(x, y)
@@ -13,12 +11,14 @@ class Rational(x: Int, y: Int) {
   val denominator: Int = y / gcd(x, y)
 
   @scala.annotation.tailrec
-  private def gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
+  private def gcd(a: Int, b: Int): Int =
+    if (b == 0) a else gcd(b, a % b)
 
   def less(that: Rational): Boolean =
     numerator * that.denominator < that.numerator * denominator
 
-  def max(that: Rational): Rational = if (less(that)) that else this
+  def max(that: Rational): Rational =
+    if (less(that)) that else this
 
   def add(that: Rational): Rational =
     new Rational(
@@ -32,5 +32,6 @@ class Rational(x: Int, y: Int) {
   def sub(that: Rational): Rational =
     add(that.neg)
 
-  override def toString: String = numerator + "/" + denominator
+  override def toString: String =
+    s"$numerator/$denominator"
 }

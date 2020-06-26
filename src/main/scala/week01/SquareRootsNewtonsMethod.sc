@@ -1,6 +1,7 @@
-def abs(x: Double) = if (x < 0) -x else x
+def abs(x: Double): Double =
+  if (x < 0) -x else x
 
-def sqrt(x: Double) = {
+def sqrt(x: Double): Double = {
 
   def isGoodEnough(guess: Double): Boolean =
     abs(guess * guess - x) / x < 0.001

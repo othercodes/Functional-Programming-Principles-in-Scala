@@ -1,17 +1,15 @@
-import week02.Rational
+import week02._
 
-object session {
-  val x = new Rational(1, 3)
-  val y = new Rational(5, 7)
-  val z = new Rational(3, 2)
+val x = new Rational(1, 3)
+val y = new Rational(5, 7)
+val z = new Rational(3, 2)
 
-  x.numerator
-  x.denominator
+x.numerator
+x.denominator
 
-  x.sub(y).sub(z)
-  y.add(y)
-  x.less(y)
-  x.max(y)
+x.sub(y).sub(z)
+y.add(y)
+x.less(y)
+x.max(y)
 
-  val w = new Rational(1)
-}
+val w = new Rational(1)

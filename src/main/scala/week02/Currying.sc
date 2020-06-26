@@ -6,7 +6,7 @@ def sum(f: Int => Int): (Int, Int) => Int = {
   sumFunction
 }
 // define an middle function
-def sumInt = sum(x => x)
+def sumInt: (Int, Int) => Int = sum(x => x)
 // Execute
 sumInt(1, 5)
 
@@ -37,3 +37,16 @@ def productMapReduce(f: Int => Int)(a: Int, b: Int): Int =
   mapReduce(f, (x, y) => x * y, 1)(a, b)
 
 product(x => x * x)(3, 4)
+
+// general implementation
+def sum(f: Int => Int, a: Int, b: Int): Int = {
+  @scala.annotation.tailrec
+  def loop(a: Int, accumulator: Int): Int = {
+    if (a > b) accumulator
+    else loop(a + 1, f(a) + accumulator)
+  }
+
+  loop(a, 0)
+}
+
+sum(x => x * x, 3, 5)
